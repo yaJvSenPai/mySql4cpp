@@ -11,6 +11,6 @@ aux_source_directory(src SRC_LIST)
 find_library(Mysql mysqlclient)
 add_compile_options(-Wall -g)
 
-add_executable(main ${SRC_LIST})
+add_executable(test ${SRC_LIST})
 
 target_link_libraries(test ${Mysql})
