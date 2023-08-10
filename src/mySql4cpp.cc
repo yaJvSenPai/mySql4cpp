@@ -48,9 +48,9 @@ pair<Result, bool> Mysql::read(const string& mysqlQuery) {
     MYSQL_RES* res = mysql_store_result(_mysql);
 
     MYSQL_ROW row;
-    while (row = mysql_fetch_row(res)) {
+    while ((row = mysql_fetch_row(res))) {
         vector<string> tmp; // 用于存储一行的结果
-        for (int i = 0; i < mysql_num_fields(res); ++i) {
+        for (unsigned int i = 0; i < mysql_num_fields(res); ++i) {
             tmp.emplace_back(row[i]);
         }
         result.emplace_back(tmp);
