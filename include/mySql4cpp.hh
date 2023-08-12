@@ -36,11 +36,15 @@ class Mysql {
 
     string getError();  // 当有错误码产生时，获取错误信息
 
+    MYSQL* getMysql() { return _mysql; }
+
    private:
     MYSQL* _mysql;
-    mutex _mutex;   // 为了实现线程安全，加锁
+    mutex _mutex;  // 为了实现线程安全，加锁
 };
 
 };  // end of namespace Mysql4cpp
+
+string safeSql(MYSQL* mysql, string str);
 
 #endif

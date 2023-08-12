@@ -55,6 +55,7 @@ pair<Result, bool> Mysql::read(const string& mysqlQuery) {
         }
         result.emplace_back(tmp);
     }
+    mysql_free_result(res);
 
     return {result, true};
 }
@@ -68,4 +69,14 @@ int Mysql::query(const string& mysqlQuery) {
 string Mysql::getError() {
     lock_guard<mutex> guard(_mutex);
     return string(mysql_error(_mysql));
+}
+
+
+string safeSql(MYSQL* mysql, string str) {
+    int size = str.size();
+    char tmp[2 * size + 1] = {0};
+    mysql_real_escape_string(mysql, tmp, str.c_str(), size);
+    str.clear();
+    str = tmp;
+    return str;
 }

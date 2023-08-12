@@ -10,7 +10,7 @@ int main() {
     bool a = sql.connect("localhost", "root", "123", "test", 0, nullptr, 0);
     cout << boolalpha << a << endl;
 
-    a = sql.write("INSERT INTO t1 (col1,col2,col3,other_column) VALUES ('b','b','b','b')");
+    a = sql.write("INSERT INTO t1 (col1,col2,col3,other_column) VALUES ('test','b','b','b')");
     cout << boolalpha << a << endl;
     if(!a) {
         cout << sql.getError() << endl;

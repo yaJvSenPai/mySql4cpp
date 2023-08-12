@@ -14,3 +14,6 @@ add_compile_options(-Wall -g)
 add_executable(test ${SRC_LIST})
 
 target_link_libraries(test ${Mysql})
+
+
+
